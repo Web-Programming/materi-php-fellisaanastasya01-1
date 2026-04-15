@@ -1,0 +1,66 @@
+/* style.css */
+
+/* Tipografi & Warna Dasar */
+body { 
+    font-family: 'Lato', sans-serif; 
+    color: #2c2c2c; 
+    background-color: #faf9f6; 
+}
+h1, h2, h3, .navbar-brand { 
+    font-family: 'Playfair Display', serif; 
+}
+
+.bg-dark-charcoal { background-color: #1a1a1a; }
+.text-copper { color: #b87333; }
+.bg-soft-gray { background-color: #f0f0f0; }
+
+/* Tombol Aksen Tembaga */
+.btn-copper { 
+    background-color: #b87333; 
+    color: white; 
+    font-weight: bold; 
+    border: none; 
+    letter-spacing: 1px;
+}
+.btn-copper:hover { 
+    background-color: #965a26; 
+    color: white;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), 
+                url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover; 
+    background-position: center;
+    height: 85vh; 
+    display: flex; 
+    align-items: center; 
+    text-align: center; 
+    color: white;
+}
+
+/* About Section */
+.about-img {
+    width: 100%; 
+    height: 350px;
+    object-fit: cover;
+    border-radius: 50% / 30%; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Card Hover Effect */
+.card {
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* Footer */
+footer { 
+    background-color: #1a1a1a; 
+    color: #d1d1d1; 
+    padding: 50px 0; 
+    font-size: 0.9rem; 
+}
