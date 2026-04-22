@@ -1,3 +1,52 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+//Route ke halaman utama (home)
+Route::get('/', function () {
+    echo "Hallo, Nama Saya Pak JR";
+    //return view('welcome');
+});
+//Route ke halaman alamat
+Route::get('/alamat', function(){
+    echo "Jalan Rajawali 14. Palembang";
+});
+
+//Route ke halaman path1/path2/detail
+Route::get('/path1/path2/detail', function(){
+    echo "Jalan Rajawali 14";
+    echo "<br>";
+    echo "Rt. 01 Rw. 02";
+    echo "<br>";
+    echo "Kecamatan Alang-Alang Lebar";
+    echo "<br>";
+    echo "Kota Palembang";
+    echo "<br>";
+    echo "Provinsi Sumatera Selatan";
+});
+
+//Route Dinamis dengan parameter id
+Route::get('/user/{id}', function($id){
+    echo "User ID: " . $id;
+});
+
+//Route Dinamis dengan parameter nama
+Route::get('/user2/{name}', function($name){
+    echo "User Name: " . $name;
+});
+
+//Route Dinamis dengan opsional parameter nama
+Route::get('/user3/{name?}', function($name = 'Tamu'){
+    echo "User Name: " . $name;
+});
+
+//Route Dinamis dengan parameter nama dan id
+Route::get('/user4/{id}/{name}', function($id, $name){
+    echo "User ID: " . $id;
+    echo "<br>";
+    echo "User Name: " . $name;
+});
+
 //Router dengan metode POST
 Route::post('/simpan', function(){
     echo "Data berhasil disimpan";
@@ -20,4 +69,24 @@ Route::delete('/hapus/{id}', function($id){
 //Route untuk menampilkan halaman test_method
 Route::get('/test-method', function(){
     return view('test_method');
+});
+
+//menampilkan halaman profil
+Route::get('/profil', function(){
+    return view('profil');
+});
+
+//gunakan . untuk memisahkan folder dan nama file view
+Route::get('/detailproduk', function(){
+    return view('produk.detail');
+});
+
+Route::get('/detailproduk/{name}', function($name){
+    return view('produk.detail', 
+    ['product_name' => $name,
+    'id' => 101,
+    'color' => 'silver',
+    'stock' => 12
+    ]
+);
 });
