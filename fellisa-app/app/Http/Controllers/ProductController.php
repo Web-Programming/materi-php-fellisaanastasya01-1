@@ -11,15 +11,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $title = "Daftar Produk";
-        $products = [
-            ['id' => 1, 'name' => 'Laptop', 'price' => 7500000],
-            ['id' => 2, 'name' => 'Mouse', 'price' => 150000],
-            ['id' => 3, 'name' => 'Keyboard', 'price' => 300000],
-            ['id' => 4, 'name' => 'Monitor', 'price' => 2500000],
-        ];
-
-        return view('produk.index', compact('title', 'products'));
+        return view('produk.index');
     }
 
     /**
@@ -28,5 +20,50 @@ class ProductController extends Controller
     public function create()
     {
         return view('produk.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        return view('produk.detail', ['id' => $id]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        return view('produk.edit', ['id' => $id]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+
+    function search(Request $request)
+    {
+        return view('produk.search');
     }
 }

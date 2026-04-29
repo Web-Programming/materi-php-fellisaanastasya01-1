@@ -66,27 +66,55 @@ Route::patch('/update2/{id}', function($id){
 Route::delete('/hapus/{id}', function($id){
     echo "Data berhasil dihapus dengan ID: " . $id;
 });
+
 //Route untuk menampilkan halaman test_method
 Route::get('/test-method', function(){
     return view('test_method');
 });
 
-//menampilkan halaman profil
+//Manampilkan halaman profil
 Route::get('/profil', function(){
-    return view('profil');
+    return view("profile");
 });
 
-//gunakan . untuk memisahkan folder dan nama file view
-Route::get('/detailproduk', function(){
-    return view('produk.detail');
-});
+//Gunakan . untuk memisahkan folder dgn view
+// Route::get('/detailproduk', function(){
+//     return view("produk.detail");
+// });
 
-Route::get('/detailproduk/{name}', function($name){
-    return view('produk.detail', 
-    ['product_name' => $name,
-    'id' => 101,
-    'color' => 'silver',
-    'stock' => 12
-    ]
-);
-});
+//mengirim data ke view
+// Route::get('/detailproduk/{name}', function($name){
+//     return view("produk.detail", 
+//         ['product_name' => $name, 
+//         'id'=> 101, 
+//         'color' => 'Silver',
+//         'stock' => 12
+//         ]
+//     );
+// });
+
+// Route::get('/produk/', function(){
+//     return view('produk.index');
+// });
+// Route::get('/produk/create', function(){
+//     return view('produk.create');
+// });
+// Route::get('/produk/search', function(){
+//     return view('produk.search');
+// });
+// Route::get('/produk/detail', function(){
+//     return view('produk.detail');
+// });
+
+use App\Http\Controllers\ProductController;
+//php artisan make:controller ProductController --resource
+Route::resource('/produk', ProductController::class);
+Route::get('/produk/search', ProductController::class.'@search');
+
+//Suplier
+// Route::get('/supplier/', function(){
+//     return view('supplier.index');
+// });
+
+//php artisan make:controller SupplierController --resource
+Route::resource('/supplier', SupplierController::class);
