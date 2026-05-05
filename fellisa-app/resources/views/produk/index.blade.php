@@ -1,24 +1,28 @@
-@extends('app.master')
-
-@section('title', 'Produk Index')
-
-@section('sidebar')
-    @parent
-    @section('submenu-produk')
-        <a href="/produk/create" class="list-group-item list-group-item-action ps-4 
-        {{ request()->is('produk/create') ? 'active' : '' }}">Tambah Produk</a>
-        <a href="/produk/search" class="list-group-item list-group-item-action ps-4 
-        {{ request()->is('produk/search') ? 'active' : '' }}">Cari Produk</a>
-    @endsection
-@endsection
-
-@section('content')
-    <h1 class="h3 mb-3">Produk Index</h1>
-    <p class="text-muted">Halaman daftar produk menggunakan layout master.</p>
-
-    <div class="card">
-        <div class="card-body">
-            Konten produk bisa ditampilkan di sini.
-        </div>
+<div class="container-fluid">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Produk</th>
+                    <th>Harga</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($products as $item)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->name }}</td>
+                    <td>Rp {{ number_format($item->price, 0, ',', '.') }}</td>
+                    <td>
+                        <a href="{{ url('/produk/' . $item->id . '/edit') }}" class="btn btn-sm btn-primary">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
-@endsection
+</div>

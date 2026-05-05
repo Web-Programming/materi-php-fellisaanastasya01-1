@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product; // Pastikan Model Product sudah dibuat
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -11,59 +13,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('produk.index');
-    }
+        $title = "Daftar Produk";
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('produk.create');
-    }
+        // Cara 1: Menggunakan Eloquent ORM (Paling direkomendasikan di Laravel)
+        $products = Product::all();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        // Cara 2: Menggunakan Query Builder (Sesuai foto baris 24)
+        // $products = DB::table('products')->get();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        return view('produk.detail', ['id' => $id]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        return view('produk.edit', ['id' => $id]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-
-    function search(Request $request)
-    {
-        return view('produk.search');
+        return view('produk.index', compact('title', 'products'));
     }
 }
